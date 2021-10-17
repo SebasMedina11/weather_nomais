@@ -15,7 +15,7 @@ export class UI{
 	}
 	renderImage(Data){
 		const iconImage = document.getElementById('iconImage')
-		iconImage.src = `http://openweathermap.org/img/wn/${Data.weather[0]['icon']}@2x.png`
+		iconImage.setAttribute( "src",`http://openweathermap.org/img/wn/${Data.weather[0]['icon']}@2x.png`)
 	}
 	
 }
