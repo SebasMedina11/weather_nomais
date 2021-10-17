@@ -4,13 +4,14 @@ const {UI}=require('./UI')
 const{Store}=require('./Store')
 const store = new Store()
 const{city,countryCode}=store.getLocationData()
-console.log(city,countryCode)
 const ui = new UI()
 const weather = new Weather(city,countryCode)
 
 async function fetchWeather(){
 	const data =await weather.getWeather()
 	ui.render(data)
+	ui.renderImage(data)
+	cleanForm()
 }
 document.getElementById('w-change-btn').addEventListener('click',(e)=>{
 
@@ -21,5 +22,10 @@ document.getElementById('w-change-btn').addEventListener('click',(e)=>{
 	fetchWeather()
 	e.preventDefault()
 })
+
+const cleanForm = ()=>{
+	document.getElementById("city").value = ""
+	document.getElementById("countryCode").value =""
+}
 
 document.addEventListener( 'DOMContentLoaded',fetchWeather)

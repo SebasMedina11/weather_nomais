@@ -5,7 +5,6 @@ export class UI{
 		this.string=document.getElementById('weather-string')
 		this.humidity=document.getElementById('weather-humidity')
 		this.wind=document.getElementById('weather-wind')
-
 	}
 	render(weather){
 		this.location.textContent = weather.name + '/' + weather.sys.country
@@ -13,6 +12,10 @@ export class UI{
 		this.string.textContent=weather.main.temp+'°C'
 		this.humidity.textContent='humidity: ' + weather.main.humidity+'%'
 		this.wind.textContent= 'wind: '+ weather.wind.speed + 'm/s'
+	}
+	renderImage(Data){
+		const iconImage = document.getElementById('iconImage')
+		iconImage.src = `http://openweathermap.org/img/wn/${Data.weather[0]['icon']}@2x.png`
 	}
 	
 }
