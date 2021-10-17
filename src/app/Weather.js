@@ -1,10 +1,13 @@
+
 export class Weather{
 	constructor(city, countryCode){
 		this.apikey='ba3d6c44cb9d1524ba69f9e8b678ceed'
 		this.city = city
 		this.countryCode = countryCode
 	}
+
 	async getWeather(){
+		
 		const URI = `https://api.openweathermap.org/data/2.5/weather?q=${this.city},${this.countryCode}&appid=${this.apikey}&units=metric`
 		const response=await fetch(URI)
 		const  data = await response.json()

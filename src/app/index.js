@@ -11,21 +11,27 @@ async function fetchWeather(){
 	const data =await weather.getWeather()
 	ui.render(data)
 	ui.renderImage(data)
+	
 	cleanForm()
 }
 document.getElementById('w-change-btn').addEventListener('click',(e)=>{
 
 	const city=document.getElementById('city').value
 	const countryCode = document.getElementById('countryCode').value
+	if(city=="" || countryCode==""){
+		 ui.renderError()
+	}else{
 	weather.changeLocation(city,countryCode)
 	store.setLocationData(city,countryCode)
 	fetchWeather()
 	e.preventDefault()
+}
 })
 
 const cleanForm = ()=>{
 	document.getElementById("city").value = ""
 	document.getElementById("countryCode").value =""
 }
+
 
 document.addEventListener( 'DOMContentLoaded',fetchWeather)
